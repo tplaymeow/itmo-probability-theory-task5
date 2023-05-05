@@ -73,11 +73,25 @@ struct Command: ParsableCommand {
     print("Dispersion:")
     print(dispersion.formatted())
 
+    let fixedDispersion = dispersion
+    * Double(numbers.count)
+    / Double(numbers.count - 1)
+
+    print()
+    print("Fixed dispersion (S^2):")
+    print(fixedDispersion.formatted())
+
     let standardDeviation = sqrt(dispersion)
 
     print()
     print("Standard deviation:")
     print(standardDeviation.formatted())
+
+    let fixedStandardDeviation = sqrt(fixedDispersion)
+
+    print()
+    print("Fixed standard deviation:")
+    print(fixedStandardDeviation.formatted())
 
     let intervalsCount = 1 + log2(Double(numbers.count))
     let intervalLength = range / intervalsCount
